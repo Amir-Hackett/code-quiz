@@ -48,7 +48,7 @@ var qIndex = 0;
 var startingTime = 75;
 var time = document.getElementById("time")
 var start = document.querySelector(".startbtn")
-var qTitle = document.getElementById("question-title")
+var qTitle = document.querySelector("#question-title")
 var qOptions = document.getElementById("question-options")
 var qResponse = document.getElementById("question-response")
 
@@ -60,19 +60,32 @@ function startQuiz() {
 setInterval(function(){
 startingTime--
 time.textContent = startingTime
+if(startingTime < 1) {
+    gameOver()
+} 
 },1000)
 displayQ()
 }
 
 //displaying questions
 function displayQ() {
+   start.setAttribute("style", "display:none") 
    var showQuestion = questions[qIndex] 
-   qTitle.textContent = showQuestion.title
-   for (var i = 0; i < questions.length; i++) {
-       var qBtn = document.createElement("button")
-       qBtn.textContent = questions[qIndex].options
-       qOptions.appendChild(qBtn)
+   qOptions.innerHTML = ""
+   qTitle.textContent = showQuestion.question
+ 
+    showQuestion.options.forEach(function(option){
+        var qBtn = document.createElement("button")
+        qBtn.textContent = option
+        qOptions.appendChild(qBtn)
+    })
+   if(questions.length < 1) {
+       gameOver()
    }
+}
+function gameOver(){
+clearInterval(startingTime) 
+time.textContent = 0
 }
 
 pageLoad()
