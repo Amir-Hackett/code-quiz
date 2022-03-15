@@ -8,6 +8,11 @@ for (i = 0; i < totalScores.length; i++) {
   scoreList.appendChild(submit)
 }
 
+//clears local storage and html
 function clearPage(){
-  clearAll.onclick = clearInterval (clearAll)
+  clearScore.onclick = function(){
+    localStorage.clear()
+    scoreList.innerHTML = " "
+  }
 }
+clearPage()

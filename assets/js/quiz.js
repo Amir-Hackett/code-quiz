@@ -58,6 +58,7 @@ var finalScore = 0
 var finishedSection = document.getElementById("finished-section")
 var finishedScore = document.getElementById("finished-score")
 var playerInitials = document.getElementById("player-initials")
+var insertInstructions = document.getElementById("insert-instructions")
 
 //new way to write a function
 function pageLoad(){
@@ -129,8 +130,8 @@ finalScore = time.textContent
 time.textContent = 0
 qDisplay.setAttribute("style", "display:none;")
 finishedSection.setAttribute("style", "display:flex;")
-finishedScore.textContent = "Great Work You Scored " + finalScore + "!  <br />";
-finishedScore.textContent += "Insert Name Below"
+finishedScore.textContent = "Great Work You Scored " + finalScore + "!"
+insertInstructions.textContent = "Insert Name Below"
 var submit = document.createElement("button")
 submit.textContent = "Submit Score"
 finishedSection.appendChild(submit)
