@@ -46,7 +46,8 @@ var questions = [
 
 var totalScores = []
 var qIndex = 0;
-var startingTime = 75;
+//change starting time to 75
+var startingTime = 5;
 var time = document.getElementById("time")
 var start = document.querySelector(".startbtn")
 var qTitle = document.querySelector("#question-title")
@@ -140,6 +141,7 @@ submit.onclick = function(){
   totalScores.push(userScore)
   var newScore = JSON.stringify(totalScores)
   localStorage.setItem("totalScores", newScore)
+  window.location.href="highscore.html"
   }
 }
 

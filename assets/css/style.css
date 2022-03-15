@@ -49,3 +49,8 @@ ol.d {
     top: 0;
     right: 10px;
 }
+
+input {
+    position: relative;
+    top: 40px;
+}
