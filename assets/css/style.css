@@ -22,6 +22,13 @@ header button {
     width: 8em;
 }
 
+header li {
+    margin-left: auto;
+    margin-right: auto;
+    width: 8em; 
+    font-size: 20px;
+}
+
 button {
     background-color: var(--primary-color); 
     border-color: var(--primary-color);
@@ -37,6 +44,13 @@ section {
     padding-top: 100px;
     text-align: center;
     position: relative;
+}
+
+#finished-section {
+    display: none;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
 }
 
 button:hover {
@@ -57,7 +71,7 @@ ol.d {
     right: 10px;
 }
 
-input {
+section {
     position: relative;
     top: 40px;
 }

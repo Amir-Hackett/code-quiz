@@ -52,8 +52,12 @@ var start = document.querySelector(".startbtn")
 var qTitle = document.querySelector("#question-title")
 var qOptions = document.getElementById("question-options")
 var qResponse = document.getElementById("question-response")
+var qDisplay = document.querySelector(".question-display")
 var interval
 var finalScore = 0
+var finishedSection = document.getElementById("finished-section")
+var finishedScore = document.getElementById("finished-score")
+var playerInitials = document.getElementById("player-initials")
 
 //new way to write a function
 function pageLoad(){
@@ -123,15 +127,15 @@ function gameOver(){
 clearInterval(interval) 
 finalScore = time.textContent
 time.textContent = 0
-qOptions.setAttribute("style", "display:none")
-qTitle.textContent = "Great Work you scored " + finalScore
-var initalInput = document.createElement("input")
-qTitle.appendChild(initalInput)
+qDisplay.setAttribute("style", "display:none;")
+finishedSection.setAttribute("style", "display:flex;")
+finishedScore.textContent = "Great Work You Scored " + finalScore + "!  <br />";
+finishedScore.textContent += "Insert Name Below"
 var submit = document.createElement("button")
 submit.textContent = "Submit Score"
-qTitle.appendChild(submit)
+finishedSection.appendChild(submit)
 submit.onclick = function(){
-  var initals = initalInput.value
+  var initals = playerInitials.value
   var userScore = {
     initals: initals, 
     score: finalScore
