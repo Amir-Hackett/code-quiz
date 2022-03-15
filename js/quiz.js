@@ -73,15 +73,44 @@ function displayQ() {
    var showQuestion = questions[qIndex] 
    qOptions.innerHTML = ""
    qTitle.textContent = showQuestion.question
- 
+ //forEach calls a function for each element in an array.
     showQuestion.options.forEach(function(option){
         var qBtn = document.createElement("button")
+        qBtn.value = option
         qBtn.textContent = option
+        qBtn.onclick = verifyAns
         qOptions.appendChild(qBtn)
     })
    if(questions.length < 1) {
        gameOver()
    }
+}
+
+function verifyAns() {
+  if (this.value === questions[qIndex].answer) {
+    qResponse.textContent = 'Correct' 
+    setTimeout(function(){
+      qResponse.textContent = ""
+    if(qIndex === 0 || time === 0){
+      gameOver()
+    } else {
+      displayQ()
+    }
+    }, 1000)
+  } 
+  else {
+    qResponse.textContent = 'Incorrect'
+    setTimeout(function(){
+      qResponse.textContent = ""
+    if(qIndex === 0 || time === 0){
+      gameOver()
+    } else {
+      displayQ()
+    }
+    }, 1000)
+    startingTime = startingTime - 5
+    time.textContent = startingTime
+  } 
 }
 function gameOver(){
 clearInterval(startingTime) 
