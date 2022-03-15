@@ -6,34 +6,41 @@
 
 header h1 {
    text-align: center;
+   padding-top: 100px;
 }
 
 div a {
-    color: #8064A2;
+    color: var(--primary-color); 
     position: absolute;
     top: 10px;
     left: 10px;
 }
 
+header button {
+    margin-left: auto;
+    margin-right: auto;
+    width: 8em;
+}
+
 button {
-    text-align: center;
     background-color: var(--primary-color); 
     border-color: var(--primary-color);
     color: var(--tertiary-color);
     font-size: 22px;
     padding: 0px 12px 0px 12px;
     margin: 5px;
+    border-radius: 12px;
     display: block;
 }
 
 section {
-    padding-top: 50px;
+    padding-top: 100px;
     text-align: center;
     position: relative;
 }
 
 button:hover {
-    background-color: #ba94e7;
+    background-color: var(--secondary-color);
 }
 
 body h2 {

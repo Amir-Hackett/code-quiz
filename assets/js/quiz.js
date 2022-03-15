@@ -46,8 +46,7 @@ var questions = [
 
 var totalScores = []
 var qIndex = 0;
-//change starting time to 75
-var startingTime = 5;
+var startingTime = 75;
 var time = document.getElementById("time")
 var start = document.querySelector(".startbtn")
 var qTitle = document.querySelector("#question-title")
