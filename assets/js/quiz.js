@@ -52,6 +52,7 @@ var start = document.querySelector(".startbtn")
 var qTitle = document.querySelector("#question-title")
 var qOptions = document.getElementById("question-options")
 var qResponse = document.getElementById("question-response")
+var interval
 var finalScore = 0
 
 //new way to write a function
@@ -59,7 +60,7 @@ function pageLoad(){
     start.onclick = startQuiz
 }
 function startQuiz() {
-setInterval(function(){
+interval = setInterval(function(){
 startingTime--
 time.textContent = startingTime
 if(startingTime < 1) {
@@ -72,6 +73,8 @@ displayQ()
 //displaying questions
 function displayQ() {
    start.setAttribute("style", "display:none") 
+   document.getElementsByTagName("h1")[0].style.display = "none" 
+   document.getElementsByTagName("h2")[0].style.display = "none" 
    var showQuestion = questions[qIndex] 
    qTitle.textContent = showQuestion.question
    qOptions.innerHTML = ""
@@ -117,18 +120,27 @@ function verifyAns() {
 }
 
 function gameOver(){
-var initals = [] 
+clearInterval(interval) 
 finalScore = time.textContent
-var userScore = {
-  initals: initals, 
-  score: finalScore
-}
-var totalScores = JSON.parse(localStorage.getItem("totalScores")) || []
-totalScores.push(userScore)
-var newScore = JSON.stringify(totalScores)
-localStorage.setItem("totalScores", newScore)
-clearInterval(startingTime) 
 time.textContent = 0
+qOptions.setAttribute("style", "display:none")
+qTitle.textContent = "Great Work you scored " + finalScore
+var initalInput = document.createElement("input")
+qTitle.appendChild(initalInput)
+var submit = document.createElement("button")
+submit.textContent = "Submit Score"
+qTitle.appendChild(submit)
+submit.onclick = function(){
+  var initals = initalInput.value
+  var userScore = {
+    initals: initals, 
+    score: finalScore
+  }
+  var totalScores = JSON.parse(localStorage.getItem("totalScores")) || []
+  totalScores.push(userScore)
+  var newScore = JSON.stringify(totalScores)
+  localStorage.setItem("totalScores", newScore)
+  }
 }
 
 pageLoad()

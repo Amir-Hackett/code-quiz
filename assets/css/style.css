@@ -8,12 +8,44 @@ header h1 {
    text-align: center;
 }
 
+div a {
+    color: #8064A2;
+    position: absolute;
+    top: 10px;
+    left: 10px;
+}
+
 button {
     text-align: center;
     background-color: var(--primary-color); 
     border-color: var(--primary-color);
     color: var(--tertiary-color);
-    font-size: 22px;;
+    font-size: 22px;
     padding: 0px 12px 0px 12px;
     margin: 5px;
+    display: block;
+}
+
+section {
+    padding-top: 50px;
+    text-align: center;
+    position: relative;
+}
+
+button:hover {
+    background-color: #ba94e7;
+}
+
+body h2 {
+    text-align: center;
+}
+
+ol.d {
+    list-style-type: lower-alpha;
+  }
+
+.timer {
+    position: absolute;
+    top: 0;
+    right: 10px;
 }
