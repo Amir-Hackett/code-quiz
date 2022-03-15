@@ -44,6 +44,7 @@ var questions = [
     }
 ]
 
+var totalScores = []
 var qIndex = 0;
 var startingTime = 75;
 var time = document.getElementById("time")
@@ -51,6 +52,7 @@ var start = document.querySelector(".startbtn")
 var qTitle = document.querySelector("#question-title")
 var qOptions = document.getElementById("question-options")
 var qResponse = document.getElementById("question-response")
+var finalScore = 0
 
 //new way to write a function
 function pageLoad(){
@@ -71,8 +73,8 @@ displayQ()
 function displayQ() {
    start.setAttribute("style", "display:none") 
    var showQuestion = questions[qIndex] 
-   qOptions.innerHTML = ""
    qTitle.textContent = showQuestion.question
+   qOptions.innerHTML = ""
  //forEach calls a function for each element in an array.
     showQuestion.options.forEach(function(option){
         var qBtn = document.createElement("button")
@@ -91,7 +93,7 @@ function verifyAns() {
     qResponse.textContent = 'Correct' 
     setTimeout(function(){
       qResponse.textContent = ""
-    if(qIndex === 0 || time === 0){
+    if(qIndex === questions.length || time === 0){
       gameOver()
     } else {
       displayQ()
@@ -102,7 +104,7 @@ function verifyAns() {
     qResponse.textContent = 'Incorrect'
     setTimeout(function(){
       qResponse.textContent = ""
-    if(qIndex === 0 || time === 0){
+    if(qIndex === questions.length || time === 0){
       gameOver()
     } else {
       displayQ()
@@ -111,8 +113,20 @@ function verifyAns() {
     startingTime = startingTime - 5
     time.textContent = startingTime
   } 
+  qIndex++
 }
+
 function gameOver(){
+var initals = [] 
+finalScore = time.textContent
+var userScore = {
+  initals: initals, 
+  score: finalScore
+}
+var totalScores = JSON.parse(localStorage.getItem("totalScores")) || []
+totalScores.push(userScore)
+var newScore = JSON.stringify(totalScores)
+localStorage.setItem("totalScores", newScore)
 clearInterval(startingTime) 
 time.textContent = 0
 }
