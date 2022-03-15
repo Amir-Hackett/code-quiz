@@ -1,0 +1,19 @@
+:root {
+    --primary-color: #8064A2;
+    --secondary-color: #ba94e7;
+    --tertiary-color: #FFFFFF;
+}
+
+header h1 {
+   text-align: center;
+}
+
+button {
+    text-align: center;
+    background-color: var(--primary-color); 
+    border-color: var(--primary-color);
+    color: var(--tertiary-color);
+    font-size: 22px;;
+    padding: 0px 12px 0px 12px;
+    margin: 5px;
+}
