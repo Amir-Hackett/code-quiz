@@ -118,7 +118,7 @@ function verifyAns() {
       displayQ()
     }
     }, 1000)
-    startingTime = startingTime - 5
+    startingTime = startingTime - 10
     time.textContent = startingTime
   } 
   qIndex++
